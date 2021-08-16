@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>itca package &mdash; ITCA 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ITCA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ITCA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>itca package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/itca.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="itca-package">
+<h1>itca package<a class="headerlink" href="#itca-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-itca.metrics">
+<span id="itca-metrics-module"></span><h2>itca.metrics module<a class="headerlink" href="#module-itca.metrics" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.metrics.adjusted_accuracy_score">
+<span class="sig-prename descclassname"><span class="pre">itca.metrics.</span></span><span class="sig-name descname"><span class="pre">adjusted_accuracy_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cardinal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.metrics.adjusted_accuracy_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusted accuracy is an adjustment for accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>int array</em><em>, </em><em>shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – A clustering of the data into disjoint subsets.</p></li>
+<li><p><strong>y_pred</strong> (<em>int array</em><em>, </em><em>shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – A clustering of the data into disjoint subsets.</p></li>
+<li><p><strong>mapping</strong> (<cite>bidict</cite>, size = n_classes_ori) – transform the original labels to the merged labels.</p></li>
+<li><p><strong>adjust_by</strong> (<em>str</em><em>, </em><em>&quot;cardinal&quot;</em><em> or </em><em>&quot;size&quot;</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>aac</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float ( 0 &lt;= acc &lt;= 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.metrics.adjusted_accuracy_score0">
+<span class="sig-prename descclassname"><span class="pre">itca.metrics.</span></span><span class="sig-name descname"><span class="pre">adjusted_accuracy_score0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cardinal'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.metrics.adjusted_accuracy_score0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusted accuracy is an adjustment for accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>int array</em><em>, </em><em>shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – A clustering of the data into disjoint subsets.</p></li>
+<li><p><strong>y_pred</strong> (<em>int array</em><em>, </em><em>shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – A clustering of the data into disjoint subsets.</p></li>
+<li><p><strong>mapping</strong> (<cite>bidict</cite>, size = n_classes_ori) – transform the original labels to the merged labels.</p></li>
+<li><p><strong>adjust_by</strong> (<em>str</em><em>, </em><em>&quot;cardinal&quot;</em><em> or </em><em>&quot;size&quot;</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>aac</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float ( 0 &lt;= acc &lt;= 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.metrics.class_accuracy">
+<span class="sig-prename descclassname"><span class="pre">itca.metrics.</span></span><span class="sig-name descname"><span class="pre">class_accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.metrics.class_accuracy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.metrics.differential_entropy_decrease2">
+<span class="sig-prename descclassname"><span class="pre">itca.metrics.</span></span><span class="sig-name descname"><span class="pre">differential_entropy_decrease2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.metrics.differential_entropy_decrease2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.metrics.itca">
+<span class="sig-prename descclassname"><span class="pre">itca.metrics.</span></span><span class="sig-name descname"><span class="pre">itca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.metrics.itca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample-level information-theoretic classification accuracy (s-ITCA)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>int array</em><em>, </em><em>shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – A clustering of the data into disjoint subsets.</p></li>
+<li><p><strong>y_pred</strong> (<em>int array</em><em>, </em><em>shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – A clustering of the data into disjoint subsets.</p></li>
+<li><p><strong>mapping</strong> (<cite>bidict</cite>, size = n_classes_ori) – Transform the original labels to the merged labels.</p></li>
+<li><p><strong>y_dist</strong> (<em>dict of length n_classes</em>) – Distribution of the original classes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>itca_score</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.metrics.prediction_entropy">
+<span class="sig-prename descclassname"><span class="pre">itca.metrics.</span></span><span class="sig-name descname"><span class="pre">prediction_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.metrics.prediction_entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the entropy of  H(mapping(y_true), y_pred).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>numpy array</em><em>, </em><em>(</em><em>n_samples</em><em>, </em><em>)</em>) – True labels.</p></li>
+<li><p><strong>y_pred</strong> (<em>numpy array</em><em>, </em><em>(</em><em>n_samples</em><em>, </em><em>)</em>) – Prediction labels.</p></li>
+<li><p><strong>mapping</strong> (<em>bidict of size n_classes</em>) – Class mapping.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-itca.search">
+<span id="itca-search-module"></span><h2>itca.search module<a class="headerlink" href="#module-itca.search" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.search.BFSearch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.search.</span></span><span class="sig-name descname"><span class="pre">BFSearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class_type='nominal'</span></em>, <em class="sig-param"><span class="pre">metric=&lt;function</span> <span class="pre">itca&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.BFSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#itca.search.Strategy" title="itca.search.Strategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">itca.search.Strategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.BFSearch.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kfolds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.BFSearch.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the best mapping start.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The training input samples.</p></li>
+<li><p><strong>y</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>)</em>) – The target class labels. Integers from 0 to K-1.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+<li><p><strong>clf</strong> (<em>scikit-learn like classifier</em>) – Classifiers that implements the standard interfaces of <cite>scikit-learn</cite>,
+including <cite>fit(X, y)</cite> and <cite>predict(X)</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.search.BFSearchPruned">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.search.</span></span><span class="sig-name descname"><span class="pre">BFSearchPruned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class_type='nominal'</span></em>, <em class="sig-param"><span class="pre">metric=&lt;function</span> <span class="pre">itca&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.BFSearchPruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#itca.search.Strategy" title="itca.search.Strategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">itca.search.Strategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.BFSearchPruned.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kfolds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.BFSearchPruned.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the best mapping start.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The training input samples.</p></li>
+<li><p><strong>y</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>)</em>) – The target class labels. Integers from 0 to K-1.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+<li><p><strong>clf</strong> (<em>scikit-learn like classifier</em>) – Classifiers that implements the standard interfaces of <cite>scikit-learn</cite>,
+including <cite>fit(X, y)</cite> and <cite>predict(X)</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.search.GreedySearch">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.search.</span></span><span class="sig-name descname"><span class="pre">GreedySearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class_type='nominal'</span></em>, <em class="sig-param"><span class="pre">metric=&lt;function</span> <span class="pre">itca&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.GreedySearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#itca.search.Strategy" title="itca.search.Strategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">itca.search.Strategy</span></code></a></p>
+<p>Search mapping with largest ITCA by greedy algorithm.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.GreedySearch.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kfolds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.GreedySearch.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the best mapping start.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The training input samples.</p></li>
+<li><p><strong>y</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>)</em>) – The target class labels. Integers from 0 to K-1.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+<li><p><strong>clf</strong> (<em>scikit-learn like classifier</em>) – Classifiers that implements the standard interfaces of <cite>scikit-learn</cite>,
+including <cite>fit(X, y)</cite> and <cite>predict(X)</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.search.GreedySearchPruned">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.search.</span></span><span class="sig-name descname"><span class="pre">GreedySearchPruned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class_type='nominal'</span></em>, <em class="sig-param"><span class="pre">metric=&lt;function</span> <span class="pre">itca&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.GreedySearchPruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#itca.search.Strategy" title="itca.search.Strategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">itca.search.Strategy</span></code></a></p>
+<p>Greedy search using the lower bound derived by class-wise accuracy to prune search space.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.GreedySearchPruned.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kfolds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.GreedySearchPruned.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the best mapping start.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The training input samples.</p></li>
+<li><p><strong>y</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>)</em>) – The target class labels. Integers from 0 to K-1.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+<li><p><strong>clf</strong> (<em>scikit-learn like classifier</em>) – Classifiers that implements the standard interfaces of <cite>scikit-learn</cite>,
+including <cite>fit(X, y)</cite> and <cite>predict(X)</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.search.Node">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.search.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.Node.add_child">
+<span class="sig-name descname"><span class="pre">add_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Node.add_child" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.search.Strategy">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.search.</span></span><span class="sig-name descname"><span class="pre">Strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">class_type='nominal'</span></em>, <em class="sig-param"><span class="pre">metric=&lt;function</span> <span class="pre">itca&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Strategy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.Strategy.combine_i_j">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">combine_i_j</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Strategy.combine_i_j" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine (merged) class labels i and j in mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – </p></li>
+<li><p><strong>j</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>next_mapping</strong> – mapping that combines the class i and j</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="build/html/itca.bidict.html#itca.bidict" title="itca.bidict">bidict</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>&gt;&gt;mapping = bidict({0:0, 1:1, 2:2})
+&gt;&gt;self.combine_i_j(0, 1, mapping)
+{0:0, 1:0, 2:1}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.Strategy.compute_itca">
+<span class="sig-name descname"><span class="pre">compute_itca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kfolds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_class_acc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Strategy.compute_itca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the data and a classifier, compute ITCA through cross validation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The training input samples.</p></li>
+<li><p><strong>y</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>)</em>) – The target class labels. Integers from 0 to K-1.</p></li>
+<li><p><strong>clf</strong> (<em>scikit-learn like classifier</em>) – Classifiers that implements the standard interfaces of <cite>scikit-learn</cite>,
+including <cite>fit(X, y)</cite> and <cite>predict(X)</cite>.</p></li>
+<li><p><strong>kfolds</strong> (<em>int</em><em> or </em><em>sklearn.model_selection.KFold instance</em>) – Folds of cross validation.</p></li>
+<li><p><strong>y_dist</strong> (<em>dict</em><em>, </em><em>optional</em>) – The classes distribution of y. If y_dist is None, this method will
+compute it automatically.</p></li>
+<li><p><strong>return_class_acc</strong> (<em>bool</em>) – Return the class-wise accuracy.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>itca_cv</strong> (<em>(kfolds, ) ndarray</em>) – The cross validated ITCA.ndarray of ITCA.</p></li>
+<li><p><strong>class_acc</strong> (<em>dict of accuracy of each class.</em>) – Accruacy of each class.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – kf is illegal.</p></li>
+<li><p><strong>ValueError</strong> – y_dist is illegal.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.Strategy.next_mappings">
+<span class="sig-name descname"><span class="pre">next_mappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Strategy.next_mappings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate mappings considered in the next round of search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mapping</strong> (<a class="reference internal" href="build/html/itca.bidict.html#itca.bidict" title="itca.bidict"><em>bidict</em></a>) – classes combination mappings.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>bidict</em> – Mappings that are considered in the next round of search.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If class_type is illegal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.Strategy.next_mappings_pruned">
+<span class="sig-name descname"><span class="pre">next_mappings_pruned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty_dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Strategy.next_mappings_pruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate mappings considered in the next round of search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mapping</strong> (<a class="reference internal" href="build/html/itca.bidict.html#itca.bidict" title="itca.bidict"><em>bidict</em></a>) – classes combination mappings.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>bidict</em> – Mappings that are considered in the next round of search.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If class_type is illegal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.search.Strategy.search">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kfolds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.search.Strategy.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the best mapping start.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The training input samples.</p></li>
+<li><p><strong>y</strong> (<em>array like of shape</em><em> (</em><em>n_samples</em><em>, </em><em>)</em>) – The target class labels. Integers from 0 to K-1.</p></li>
+<li><p><strong>class_type</strong> (<em>{&quot;nominal&quot;</em><em>, </em><em>&quot;ordinal&quot;</em><em>, </em><em>&quot;tree&quot;}</em>) – Type of classes.</p></li>
+<li><p><strong>clf</strong> (<em>scikit-learn like classifier</em>) – Classifiers that implements the standard interfaces of <cite>scikit-learn</cite>,
+including <cite>fit(X, y)</cite> and <cite>predict(X)</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-itca.simulator">
+<span id="itca-simulator-module"></span><h2>itca.simulator module<a class="headerlink" href="#module-itca.simulator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.simulator.SimData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.simulator.</span></span><span class="sig-name descname"><span class="pre">SimData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simulated data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimData.concat">
+<span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimData.concat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimData.shuffle">
+<span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimData.shuffle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffle the simulated data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.simulator.SimLDA">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.simulator.</span></span><span class="sig-name descname"><span class="pre">SimLDA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centroids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covariance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimLDA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimLDA.gen">
+<span class="sig-name descname"><span class="pre">gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimLDA.gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sampling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_samples</strong> (<cite>int</cite>, total number of samples; <cite>array-like</cite>, shape = [n_classes, ]) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>probs: None
+y: class labels, integer array
+X: covairates, shape = [n_features, n_samples]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#itca.simulator.SimData" title="itca.simulator.SimData">SimData</a>(None, y, X)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.simulator.SimOrdLogit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.simulator.</span></span><span class="sig-name descname"><span class="pre">SimOrdLogit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intercepts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimOrdLogit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generate simulation objects from ordinal logistic regression model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimOrdLogit.gen">
+<span class="sig-name descname"><span class="pre">gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimOrdLogit.gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>probs: probability distribution, shape = [n_classes, n_samples]
+y: class labels, integer array
+X: covairates, shape = [n_features, n_samples]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#itca.simulator.SimData" title="itca.simulator.SimData">SimData</a>(probs, y, X)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimOrdLogit.logodds_to_probs">
+<span class="sig-name descname"><span class="pre">logodds_to_probs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logodds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimOrdLogit.logodds_to_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute probablilities by logodds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimOrdLogit.probs_to_logodds">
+<span class="sig-name descname"><span class="pre">probs_to_logodds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimOrdLogit.probs_to_logodds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimOrdLogit.probs_to_x">
+<span class="sig-name descname"><span class="pre">probs_to_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimOrdLogit.probs_to_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the covariates <cite>x</cite> by probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>probs</strong> (<em>shape =</em><em> [</em><em>n_classes</em><em>, </em><em>n_samples</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.simulator.SimOrdLogit.x_to_logodds">
+<span class="sig-name descname"><span class="pre">x_to_logodds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.SimOrdLogit.x_to_logodds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute log odds from covariates.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.simulator.sim_merged_y">
+<span class="sig-prename descclassname"><span class="pre">itca.simulator.</span></span><span class="sig-name descname"><span class="pre">sim_merged_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_ori</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.sim_merged_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the merged clustering given the original labels <cite>y_ori</cite>, transform and accuracy.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.simulator.sim_y">
+<span class="sig-prename descclassname"><span class="pre">itca.simulator.</span></span><span class="sig-name descname"><span class="pre">sim_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.simulator.sim_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate ground truth of labels and the prediction labels</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-itca.utils">
+<span id="itca-utils-module"></span><h2>itca.utils module<a class="headerlink" href="#module-itca.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="itca.utils.bidict">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">bidict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.bidict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>Bidirectional dictionary inherited from the built-in <cite>dict</cite> to represent the class combination mapping.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.utils.bidict.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.bidict.map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.utils.bidict.reverse_map">
+<span class="sig-name descname"><span class="pre">reverse_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.bidict.reverse_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.bv2transformation">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">bv2transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.bv2transformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert binary vector to transformation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.bvstr2bv">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">bvstr2bv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bvstr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.bvstr2bv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.compute_hamming_distance">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">compute_hamming_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.compute_hamming_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Hamming distance between two binary strings or binary vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> (<em>str</em><em> or </em><em>binary numpy array</em>) – </p></li>
+<li><p><strong>v2</strong> (<em>str</em><em> or </em><em>binary numpy array</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Hamming distance between the two vectors.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.compute_y_dist">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">compute_y_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.compute_y_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the distribution of labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>numpy array</em>) – Class labels  vector whose values range from 0 to K - 1</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary whose keys indicate the class labels and values indicate the corresponding proportions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.enumerate_transforms">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">enumerate_transforms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes_ori</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes_mer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.enumerate_transforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumerate all</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.extend_classes">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">extend_classes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_ori</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.extend_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the original labels y_ori to the extended labels by transform.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.int2bvstr">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">int2bvstr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classes_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.int2bvstr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.int2mapping">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">int2mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observed_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.int2mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.inv_logit">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">inv_logit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.inv_logit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse logit function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.perm_labels">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">perm_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.perm_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="itca.utils.prob_support">
+<span class="sig-prename descclassname"><span class="pre">itca.utils.</span></span><span class="sig-name descname"><span class="pre">prob_support</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.utils.prob_support" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert array-like labels to (n_samples, n_classes) probility support.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-itca">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-itca" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Chihao Zhang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
