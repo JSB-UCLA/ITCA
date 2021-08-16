@@ -1,4 +1,4 @@
-﻿itca.bidict
+itca.bidict
 ===========
 
 .. currentmodule:: itca

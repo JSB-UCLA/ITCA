@@ -35,6 +35,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -90,6 +91,7 @@
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../api.html#utils">Utils</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">itca.bidict</a></li>
@@ -170,12 +172,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="itca-bidict">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="itca-bidict">
 <h1>itca.bidict<a class="headerlink" href="#itca-bidict" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="itca.bidict">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">itca.</span></span><span class="sig-name descname"><span class="pre">bidict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.bidict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bidirectional dictionary inherited from the built-in <cite>dict</cite> to represent the class combination mapping.</p>
+<dd><p>Bidirectional dictionary inherited from the built-in <cite>dict</cite> to represent the class combination map.
+<cite>bidict</cite> is initialized. The methods of <cite>bidict</cite> are consistent with those of the built-in class <cite>dict</cite>.</p>
+<dl class="simple">
+<dt>inverse: dict</dt><dd><p>Inverse of  the class combination map.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.bidict.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.bidict.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the original labels to the combined labels.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="itca.bidict.map_reverse">
+<span class="sig-name descname"><span class="pre">map_reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.bidict.map_reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse map the combined labels to the original labels.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bd</span> <span class="o">=</span> <span class="n">bidict</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span> <span class="c1"># a class combination map that combines class 0 and 1 into one.</span>
+<span class="gp">... </span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bd</span><span class="o">.</span><span class="n">inverse</span>
+<span class="gp">... </span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bd</span><span class="o">.</span><span class="n">reverse_map</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># randomly assign labels with equal probability</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bd</span><span class="o">.</span><span class="n">reverse_map</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="itca.bidict.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.bidict.__init__" title="Permalink to this definition">¶</a></dt>
@@ -210,8 +268,8 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code>(arr)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#itca.bidict.map" title="itca.bidict.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a>(arr)</p></td>
+<td><p>Map the original labels to the combined labels.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code>(k[,d])</p></td>
 <td><p>If key is not found, d is returned if given, otherwise KeyError is raised</p></td>
@@ -220,7 +278,7 @@
 <td><p>2-tuple; but raise KeyError if D is empty.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse_map</span></code>(arr)</p></td>
-<td><p></p></td>
+<td><p>Reverse map the combined labels to the original labels.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code>(key[, default])</p></td>
 <td><p>Insert key with a value of default if key is not in the dictionary.</p></td>

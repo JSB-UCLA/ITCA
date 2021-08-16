@@ -19,6 +19,8 @@ itca.search module
    :members:
    :undoc-members:
    :show-inheritance:
+   :automethod:
+
 
 itca.simulator module
 ---------------------

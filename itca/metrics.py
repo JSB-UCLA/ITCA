@@ -61,39 +61,6 @@ def adjusted_accuracy_score(y_true, y_pred, mapping, adjust_by="cardinal"):
     return aac
 
 
-def adjusted_accuracy_score0(y_true, y_pred, mapping, adjust_by="cardinal"):
-    """
-    Adjusted accuracy is an adjustment for accuracy. 
-
-    Parameters
-    ----------
-    y_true: int array, shape = [n_samples, ]
-        A clustering of the data into disjoint subsets.
-
-    y_pred: int array, shape = [n_samples, ]
-        A clustering of the data into disjoint subsets.
-
-    mapping: `bidict`, size = n_classes_ori
-        transform the original labels to the merged labels.
-    
-    adjust_by: str, "cardinal" or "size"
-
-    Returns
-    -------
-    aac: float ( 0 <= acc <= 1)
-    """
-    _, n_classes_mer = _check_consistency(y_true, y_pred, mapping)
-    y_tra = np.array([mapping[yi] for yi in y_true])
-    n_samples = y_true.size
-    # construct size length
-    card = []
-    for i in range(n_classes_mer):
-        card.append(len(mapping.inverse[i]))
-    card = np.array(card)
-    card_inv = 1.0 / card
-    aac = np.sum((y_tra == y_pred) * card_inv[y_tra]) / n_samples
-    return aac
-
 
 def itca(y_true, y_pred, mapping, y_dist=None):
     """
@@ -144,29 +111,6 @@ def itca(y_true, y_pred, mapping, y_dist=None):
     return np.sum(num) / den.size
 
 
-def differential_entropy_decrease2(y_true, y_pred, mapping, y_dist=None):
-    n_classes_ = len(mapping.inverse)
-    if y_dist:
-        if len(y_dist) != len(mapping):
-            raise ValueError("The len of y_dist and mapping must be the same.")
-        y_dist_sum = 0
-        for key in y_dist:
-            pi = y_dist[key]
-            assert (pi > 0)
-            y_dist_sum += pi
-        if abs(y_dist_sum - 1.0) > 1e-10:
-            raise ValueError("The values of y_dist must be summing to 1.")
-    else:
-        y_dist = compute_y_dist(y_true)
-    ty = mapping.map(y_true)
-    ca = class_accuracy(ty, y_pred)
-    ded = 0
-    for key in ca:
-        p = np.sum([y_dist[i] for i in mapping.inverse[key]])
-        ded += - np.log(p) * p * ca[key]
-    return ded
-
-
 def prediction_entropy(y_true, y_pred, mapping, y_dist=None):
     """
     Compute the entropy of  H(mapping(y_true), y_pred).
@@ -181,6 +125,11 @@ def prediction_entropy(y_true, y_pred, mapping, y_dist=None):
 
     mapping: bidict of size n_classes
         Class mapping.
+
+    Returns
+    -------
+    float
+        The value of the prediction entropy
     """
     n_classes_ = len(mapping.inverse)
     if y_dist:
@@ -207,15 +156,13 @@ def prediction_entropy(y_true, y_pred, mapping, y_dist=None):
 
 
 if __name__ == "__main__":
-    from comb.utils import bidict
-
+    from itca import bidict
     m = bidict({0: 0, 1: 0, 2: 1})
     y_true = np.random.randint(0, 3, 1000)
     y_true = np.array([0, 0, 1, 1, 2, 2])
     y_pred = np.random.randint(0, 2, 1000)
     y_pred = m.map(y_true)
     y_dist = {0: .3, 1: .4, 2: .3}
-    acc0 = adjusted_accuracy_score0(y_true, y_pred, m, adjust_by="cardinal")
     acc1 = adjusted_accuracy_score(y_true, y_pred, m, adjust_by="cardinal")
     acc2 = adjusted_accuracy_score(y_true, y_pred, m, adjust_by="size")
 

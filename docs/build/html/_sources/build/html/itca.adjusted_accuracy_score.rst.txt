@@ -1,4 +1,4 @@
-﻿itca.adjusted\_accuracy\_score
+itca.adjusted\_accuracy\_score
 ==============================
 
 .. currentmodule:: itca

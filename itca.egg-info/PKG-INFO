@@ -7,8 +7,9 @@ Author: Chihao Zhang
 Author-email: zhangchihao11@outlook.com
 License: MIT
 Description: 
-        # ITCA (information-theoretic classification accuracy)
-        Information-theoretic classification accuracy: a criterion that guides data-driven combination of ambiguous outcome labels in multi-class classification
+        # ITCA - Guide the ambiguous outcome labels combination for multi-class classification
+        **ITCA**  (Information-theoretic classification accuracy) is a criterion that guides data-driven combination of ambiguous outcome labels in multi-class classification.
+        
         
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License

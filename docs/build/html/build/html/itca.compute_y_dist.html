@@ -35,6 +35,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -90,6 +91,7 @@
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../api.html#utils">Utils</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="itca.bidict.html">itca.bidict</a></li>
@@ -170,12 +172,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="itca-compute-y-dist">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="itca-compute-y-dist">
 <h1>itca.compute_y_dist<a class="headerlink" href="#itca-compute-y-dist" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="itca.compute_y_dist">
 <span class="sig-prename descclassname"><span class="pre">itca.</span></span><span class="sig-name descname"><span class="pre">compute_y_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itca.compute_y_dist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the distribution of labels</p>
+<dd><p>Compute the distribution of labels given the label vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>y</strong> (<em>numpy array</em>) – Class labels  vector whose values range from 0 to K - 1</p>
@@ -187,6 +213,12 @@
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">compute_y_dist</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.5</span><span class="p">}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
