@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API &mdash; ITCA 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="itca.bidict" href="build/html/itca.bidict.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ITCA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#utils">Utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.bidict.html">itca.bidict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.compute_y_dist.html">itca.compute_y_dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.compute_hamming_distance.html">itca.compute_hamming_distance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.adjusted_accuracy_score.html">itca.adjusted_accuracy_score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.itca.html">itca.itca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.prediction_entropy.html">itca.prediction_entropy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#search">Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.GreedySearch.html">itca.GreedySearch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.GreedySearchPruned.html">itca.GreedySearchPruned</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.BFSearch.html">itca.BFSearch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build/html/itca.BFSearchPruned.html">itca.BFSearchPruned</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ITCA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-itca"></span><div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="utils">
+<h2>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="build/html/itca.bidict.html#itca.bidict" title="itca.bidict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bidict</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Bidirectional dictionary inherited from the built-in <cite>dict</cite> to represent the class combination mapping.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="build/html/itca.compute_y_dist.html#itca.compute_y_dist" title="itca.compute_y_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_y_dist</span></code></a>(y)</p></td>
+<td><p>Compute the distribution of labels</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="build/html/itca.compute_hamming_distance.html#itca.compute_hamming_distance" title="itca.compute_hamming_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_hamming_distance</span></code></a>(v1, v2)</p></td>
+<td><p>Compute the Hamming distance between two binary strings or binary vector</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="build/html/itca.adjusted_accuracy_score.html#itca.adjusted_accuracy_score" title="itca.adjusted_accuracy_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjusted_accuracy_score</span></code></a>(y_true, y_pred, mapping)</p></td>
+<td><p>Adjusted accuracy is an adjustment for accuracy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="build/html/itca.itca.html#itca.itca" title="itca.itca"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itca</span></code></a>(y_true, y_pred, mapping[, y_dist])</p></td>
+<td><p>Sample-level information-theoretic classification accuracy (s-ITCA)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="build/html/itca.prediction_entropy.html#itca.prediction_entropy" title="itca.prediction_entropy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prediction_entropy</span></code></a>(y_true, y_pred, mapping)</p></td>
+<td><p>Compute the entropy of  H(mapping(y_true), y_pred).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="search">
+<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="build/html/itca.GreedySearch.html#itca.GreedySearch" title="itca.GreedySearch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GreedySearch</span></code></a>([class_type, metric])</p></td>
+<td><p>Search mapping with largest ITCA by greedy algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="build/html/itca.GreedySearchPruned.html#itca.GreedySearchPruned" title="itca.GreedySearchPruned"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GreedySearchPruned</span></code></a>([class_type, metric])</p></td>
+<td><p>Greedy search using the lower bound derived by class-wise accuracy to prune search space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="build/html/itca.BFSearch.html#itca.BFSearch" title="itca.BFSearch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BFSearch</span></code></a>([class_type, metric])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="build/html/itca.BFSearchPruned.html#itca.BFSearchPruned" title="itca.BFSearchPruned"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BFSearchPruned</span></code></a>([class_type, metric])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="build/html/itca.bidict.html" class="btn btn-neutral float-right" title="itca.bidict" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Chihao Zhang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

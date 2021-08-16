@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: itca
+Version: 0.1.0
+Summary: A  Data-driven Criterion to Combining Ambiguous Outcome Labels in Multi-class Classification
+Home-page: https://github.com/messcode/stagewiseNN
+Author: Chihao Zhang
+Author-email: zhangchihao11@outlook.com
+License: MIT
+Description: 
+        # ITCA (information-theoretic classification accuracy)
+        Information-theoretic classification accuracy: a criterion that guides data-driven combination of ambiguous outcome labels in multi-class classification
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
