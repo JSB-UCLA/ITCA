@@ -1,4 +1,4 @@
-﻿itca.prediction\_entropy
+itca.prediction\_entropy
 ========================
 
 .. currentmodule:: itca

@@ -1,4 +1,4 @@
-﻿itca.itca
+itca.itca
 =========
 
 .. currentmodule:: itca

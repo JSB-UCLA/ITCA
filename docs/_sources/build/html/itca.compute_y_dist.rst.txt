@@ -1,4 +1,4 @@
-﻿itca.compute\_y\_dist
+itca.compute\_y\_dist
 =====================
 
 .. currentmodule:: itca

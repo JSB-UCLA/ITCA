@@ -23,6 +23,25 @@ class Node(object):
 
 
 class Strategy(metaclass=abc.ABCMeta):
+    """
+    Attributes
+    ---------
+    class_type: str
+        The class tyype. It should be one of "nominal" (the class has no specific oder), "ordinal" and "tree"
+        for tree structured (not implemented for now).
+
+    metric: function
+        The function with signature (y_test, y_pred, mapping, y_dist) and outputs a real-value.
+
+
+    Methods
+    -------
+    compute_itca(self, X, y, clf, mapping, kfolds=5, y_dist=None, return_class_acc=False)
+        Given the map compute the metric value.
+
+    search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
+        Search the best mapping start from the identitfy map.
+    """
     def __init__(self, class_type="nominal", metric=itca):
         """
         Searching strategy.
@@ -156,7 +175,7 @@ class Strategy(metaclass=abc.ABCMeta):
 
         Parameters
         ----------
-        X: array like of shape (n_samples, n_features)
+        X: array-like of shape (n_samples, n_features)
             The training input samples.
 
         y: array like of shape (n_samples, )
@@ -231,6 +250,15 @@ class Strategy(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=False):
+        return self
+
+
+class GreedySearch(Strategy):
+    """
+    Search the class combination map that maximizes s-ITCA by greedy algorithm.
+    """
+
+    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
         """
         Search the best mapping start.
 
@@ -242,26 +270,17 @@ class Strategy(metaclass=abc.ABCMeta):
         y: array like of shape (n_samples, )
             The target class labels. Integers from 0 to K-1.
 
-        class_type: {"nominal", "ordinal", "tree"}
-            Type of classes.
-
-        clf: scikit-learn like classifier 
-            Classifiers that implements the standard interfaces of `scikit-learn`, 
+        clf: scikit-learn like classifier
+            Classifiers that implements the standard interfaces of `scikit-learn`,
             including `fit(X, y)` and `predict(X)`.
- 
+
+        early_stop: bool
+            Stop when the metric cannot be improved by class combination when `early_stop` is True.
+
         Return
         ------
         self: object
         """
-        return self
-
-
-class GreedySearch(Strategy):
-    """
-    Search mapping with largest ITCA by greedy algorithm.
-    """
-
-    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
         unique_y = np.unique(y)
         n_classes = len(unique_y)
         if min(y) != 0 or max(y) != n_classes - 1:
@@ -306,7 +325,8 @@ class GreedySearch(Strategy):
 
 class GreedySearchPruned(Strategy):
     """
-    Greedy search using the lower bound derived by class-wise accuracy to prune search space.
+    Search the class combination map that maximizes s-ITCA by greedy algorithm.
+    Using the lower bound derived by class-wise accuracy to prune the search space.
     """
 
     def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
@@ -360,6 +380,9 @@ class GreedySearchPruned(Strategy):
 
 
 class BFSearch(Strategy):
+    """
+    Search the class combination map that maximizes s-ITCA by breadth-first search algorithm.
+    """
     def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=False):
         self.counter = 0
 
@@ -403,6 +426,10 @@ class BFSearch(Strategy):
 
 
 class BFSearchPruned(Strategy):
+    """
+    Search the class combination map that maximizes s-ITCA by breadth-first search algorithm.
+    Using the lower bound derived by class-wise accuracy to prune the search space.
+    """
     def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
         self.counter = 0
         unique_y = np.unique(y)

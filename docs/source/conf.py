@@ -31,7 +31,19 @@ release = '0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.autosummary'
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.napoleon',  # different doc-styles (Google, Numpy)
+    # 'myst_parser',  # use Markdown using MyST
+    "nbsphinx",  # notebooks
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.githubpages',  # enable github-pages
+    'sphinx_autodoc_typehints',  # needs to be after napoleon
 ]
 
 # Add any paths that contain templates here, relative to this directory.

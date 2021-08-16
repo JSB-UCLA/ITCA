@@ -4,7 +4,7 @@ import numpy as np
 
 def compute_y_dist(y):
     """
-    Compute the distribution of labels
+    Compute the distribution of labels given the label vectors.
 
     Parameters
     ----------
@@ -16,6 +16,11 @@ def compute_y_dist(y):
     dict
         A dictionary whose keys indicate the class labels and values indicate the corresponding proportions.
 
+    Examples
+    --------
+    >>> y = np.array([0, 0, 1, 1])
+    >>> y = compute_y_dist(y)
+    ...   {0: 0.5, 1:0.5}
     """
     keys, vals = np.unique(y, return_counts=True)
     vals = vals.astype(float) / y.size
@@ -25,7 +30,36 @@ def compute_y_dist(y):
 
 class bidict(dict):
     """
-    Bidirectional dictionary inherited from the built-in `dict` to represent the class combination mapping.
+    Bidirectional dictionary inherited from the built-in `dict` to represent the class combination map.
+    `bidict` is initialized. The methods of `bidict` are consistent with those of the built-in class `dict`.
+
+    Attribute
+    ---------
+    inverse: dict
+        Inverse of  the class combination map.
+
+    Methods
+    -------
+    map(arr)
+        Map the original labels to the combined labels.
+
+    map_reverse(arr)
+        Reverse map the combined labels to the original labels.
+
+    Examples
+    --------
+    >>> bd = bidict({0:0, 1:0, 2:1}) # a class combination map that combines class 0 and 1 into one.
+    ... {0:0, 1:0, 2:1}
+    >>> bd.inverse
+    ... {0: [0, 1], 1: [2]}
+    >>> y1 = np.array([0, 0, 1, 1, 2, 2])
+    >>> bd.map(y1)
+    ... array([0, 0, 0, 0, 1, 1])
+    >>> y2 = array([0, 0, 0, 0, 1, 1])
+    >>> bd.reverse_map(y2)
+    ... array([0, 1, 0, 1, 2, 2]) # randomly assign labels with equal probability
+    >>> bd.reverse_map(y2)
+    ... array([0, 0, 1, 0, 2, 2])
     """
 
     def __init__(self, *args, **kwargs):
@@ -52,9 +86,15 @@ class bidict(dict):
         super(bidict, self).__delitem__(key)
 
     def map(self, arr):
+        """
+        Map the original labels to the combined labels.
+        """
         return np.array([self.__getitem__(xi) for xi in arr])
 
     def reverse_map(self, arr):
+        """
+        Reverse map the combined labels to the original labels.
+        """
         n_classes_ori = np.unique(arr).size
         n_classes_ext = len(self)
         if n_classes_ext < n_classes_ori:
@@ -111,8 +151,11 @@ def compute_hamming_distance(v1, v2):
 
     Parameters
     ----------
-    v1: str or binary numpy array
-    v2: str or binary numpy array
+    v1: str or binary array
+        A binary vector or string.
+
+    v2: str or binary  array
+        The compared binary vector or string.
 
     Returns
     -------

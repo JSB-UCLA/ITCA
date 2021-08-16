@@ -39,6 +39,7 @@ if not VERSION:
 else:
     about['__version__'] = VERSION
 
+
 class UploadCommand(Command):
     """Support setup.py upload."""
 

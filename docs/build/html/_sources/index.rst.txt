@@ -6,6 +6,9 @@
 Welcome to ITCA's documentation!
 ================================
 
+**ITCA**  (Information-theoretic classification accuracy) is a criterion that guides data-driven combination of ambiguous outcome labels in multi-class classification.
+
+
 Installation
 ------------
 
@@ -19,17 +22,21 @@ Install from source code:
 
 .. code:: shell
 
-   git clone https://github.com/zhanglabtools/stagewiseNN.git
+   git clone https://github.com/JSB-UCLA/ITCA.git
    cd ITCA
    python setup.py install
 
-Usage
------
+Contribute
+----------
+- Issue tracker:  https://github.com/messcode/ITCA/issues
+- Source code:
+	- https://github.com/JSB-UCLA/ITCA
+	- https://github.com/messcode/ITCA (the devlopmental version)
 
 Contact
 -------
-If you are having issues, please let us know. We have
-
+If you are having issues, please let us know. We have a mail list located at:
+ - zhang.dabiao11@gmail.com
 
 
 .. toctree::
@@ -37,6 +44,7 @@ If you are having issues, please let us know. We have
    :maxdepth: 1
 
    installation
+   tutorials
    api
 
 
@@ -44,6 +52,5 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 

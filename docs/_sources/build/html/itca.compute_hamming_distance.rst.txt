@@ -1,4 +1,4 @@
-﻿itca.compute\_hamming\_distance
+itca.compute\_hamming\_distance
 ===============================
 
 .. currentmodule:: itca

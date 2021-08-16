@@ -7,7 +7,6 @@ API
 
 Utils
 -------
-
 .. autosummary::
     :toctree: build/html/
 
@@ -19,13 +18,13 @@ Utils
 
 Metrics
 -------
-
 .. autosummary::
     :toctree: build/html/
 
     adjusted_accuracy_score
     itca
     prediction_entropy
+
 
 Search
 ------
