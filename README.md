@@ -24,6 +24,22 @@ Install from source code:
    python setup.py install
 ```
 
+ITCA is easy to use.
+
+``` code python
+from itca import itca, compute_y_dist, bidict, GreedySearch
+# ===================  Inputs ========================
+# X, y_obs = dataset.features, dataset.ambigous_labels 
+# =================== Evaluate s-ITCA ================
+combination = bidict({0:0, 1:0, 2:1})#combine class 0 and 1 into one
+itca(y_obs, y_pred, combination, compute_y_dist(y_obs))
+# ============= Search class combination =============
+gs = GreedySearch(class_type='ordinal')
+gs.search(X, y_obs, clf, verbose=False, early_stop=True)
+gs.selected # show the selected class combination
+```
+Please see the [tutorial](https://messcode.github.io/ITCA/tutorials.htmll)  for more details.
+
 ## Contribute
 - Issue tracker:  https://github.com/messcode/ITCA/issues
 - Source code:
@@ -31,5 +47,4 @@ Install from source code:
 	- https://github.com/messcode/ITCA (the devlopmental version)
 
 ## Contact
-If you are having issues, please let us know. We have a mail list located at:
- - zhang.dabiao11@gmail.com
+If you are having any issues, comments regarding this project, please feel free to contact zhang.dabiao11@gmail.com
