@@ -26,7 +26,7 @@ Install from source code:
 
 ITCA is easy to use.
 
-``` code python
+``` python
 from itca import itca, compute_y_dist, bidict, GreedySearch
 # ===================  Inputs ========================
 # X, y_obs = dataset.features, dataset.ambigous_labels 
