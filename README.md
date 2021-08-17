@@ -38,7 +38,7 @@ gs = GreedySearch(class_type='ordinal')
 gs.search(X, y_obs, clf, verbose=False, early_stop=True)
 gs.selected # show the selected class combination
 ```
-Please see the [tutorial](https://messcode.github.io/ITCA/tutorials.htmll)  for more details.
+Please see the [tutorial](https://messcode.github.io/ITCA/tutorials.html)  for more details.
 
 ## Contribute
 - Issue tracker:  https://github.com/messcode/ITCA/issues
