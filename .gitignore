@@ -1,0 +1,8 @@
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+.idea
+.ipynb_checkpoints
+data/application3/user_age_X.pkl
