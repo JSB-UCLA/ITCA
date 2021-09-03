@@ -40,6 +40,8 @@ clf = LinearDiscriminantAnalysis()
 X, y_obs = dataset.features, dataset.ambigous_labels 
 # =================== Evaluate s-ITCA ================
 combination = bidict({0:0, 1:0, 2:1})#combine class 0 and 1 into one
+clf.fit(X, combination.map(y_obs))
+y_pred = clf.predict(X)
 itca(y_obs, y_pred, combination, compute_y_dist(y_obs))
 # ============= Search class combination =============
 gs = GreedySearch(class_type='ordinal')
