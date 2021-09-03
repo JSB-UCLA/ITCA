@@ -30,7 +30,7 @@ ITCA is easy to use.
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from itca import itca, compute_y_dist, bidict, GreedySearch
 #===========  Classsification algorithm =============
-# `clf` can be any sklearn-like classifcation algorithm or any algorithm that implements 
+# `clf` can be any sklearn classifcation algorithm or any algorithm that implements 
 # `clf.fit(X, y)` for fitting and `clf.predict(X)` for prediction.  
 clf = LinearDiscriminantAnalysis()
 # ===================  Inputs ========================
