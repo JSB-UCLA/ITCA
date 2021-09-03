@@ -34,8 +34,9 @@ from itca import itca, compute_y_dist, bidict, GreedySearch
 # `clf.fit(X, y)` for fitting and `clf.predict(X)` for prediction.  
 clf = LinearDiscriminantAnalysis()
 # ===================  Inputs ========================
-# X is the feature matrix, a 2D numpy array of size (n_smaples, n_features).
-# y_obs is the observed labels, a 1D numpy array of size (n_samples, ) that takes values in [0, 1, 2] (the observed classes number K0=3). 
+# `X` is the feature matrix, a 2D numpy array of size (n_smaples, n_features).
+# `y_obs` is the observed labels, a 1D numpy array of size (n_samples, ) that takes values 
+# in [0, 1, 2] (the observed classes number K0=3). 
 X, y_obs = dataset.features, dataset.ambigous_labels 
 # =================== Evaluate s-ITCA ================
 combination = bidict({0:0, 1:0, 2:1})#combine class 0 and 1 into one
