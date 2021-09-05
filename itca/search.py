@@ -13,7 +13,7 @@ class Node(object):
         self.children = None
 
     def __repr__(self):
-        return "{}|ITAC={:.4f}|".format(self.mapping, np.mean(self.vals))
+        return "{}|ITCA={:.4f}|".format(self.mapping, np.mean(self.vals))
 
     def add_child(self, node):
         if self.children:

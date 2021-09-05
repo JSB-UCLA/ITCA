@@ -1,8 +1,28 @@
 import itertools
 import numpy as np
-
+import collections
+from sklearn.model_selection import KFold
 
 def compute_y_dist(y):
+    """
+    Compute the distribution of labels given the label vectors.
+
+    Parameters
+    ----------
+    y: numpy array
+        Class labels  vector whose values range from 0 to K - 1
+
+    Returns
+    -------
+    dict
+        A dictionary whose keys indicate the class labels and values indicate the corresponding proportions.
+
+    Examples
+    --------
+    >>> y = np.array([0, 0, 1, 1])
+    >>> y = compute_y_dist(y)
+    ...   {0: 0.5, 1:0.5}
+    """
     keys, vals = np.unique(y, return_counts=True)
     vals = vals.astype(float) / y.size
     y_dist = {keys[i]: vals[i] for i in range(keys.size)}
@@ -11,7 +31,36 @@ def compute_y_dist(y):
 
 class bidict(dict):
     """
-    Bidirectional dictionary.
+    Bidirectional dictionary inherited from the built-in `dict` to represent the class combination map.
+    `bidict` is initialized. The methods of `bidict` are consistent with those of the built-in class `dict`.
+
+    Attribute
+    ---------
+    inverse: dict
+        Inverse of  the class combination map.
+
+    Methods
+    -------
+    map(arr)
+        Map the original labels to the combined labels.
+
+    map_reverse(arr)
+        Reverse map the combined labels to the original labels.
+
+    Examples
+    --------
+    >>> bd = bidict({0:0, 1:0, 2:1}) # a class combination map that combines class 0 and 1 into one.
+    ... {0:0, 1:0, 2:1}
+    >>> bd.inverse
+    ... {0: [0, 1], 1: [2]}
+    >>> y1 = np.array([0, 0, 1, 1, 2, 2])
+    >>> bd.map(y1)
+    ... array([0, 0, 0, 0, 1, 1])
+    >>> y2 = array([0, 0, 0, 0, 1, 1])
+    >>> bd.reverse_map(y2)
+    ... array([0, 1, 0, 1, 2, 2]) # randomly assign labels with equal probability
+    >>> bd.reverse_map(y2)
+    ... array([0, 0, 1, 0, 2, 2])
     """
 
     def __init__(self, *args, **kwargs):
@@ -38,9 +87,15 @@ class bidict(dict):
         super(bidict, self).__delitem__(key)
 
     def map(self, arr):
+        """
+        Map the original labels to the combined labels.
+        """
         return np.array([self.__getitem__(xi) for xi in arr])
 
     def reverse_map(self, arr):
+        """
+        Reverse map the combined labels to the original labels.
+        """
         n_classes_ori = np.unique(arr).size
         n_classes_ext = len(self)
         if n_classes_ext < n_classes_ori:
@@ -91,10 +146,27 @@ def int2mapping(observed_classes, i):
     return true_mapping
 
 
-def hamming_distance(v1, v2):
+def compute_hamming_distance(v1, v2):
+    """
+    Compute the Hamming distance between two binary strings or binary vector
+
+    Parameters
+    ----------
+    v1: str or binary array
+        A binary vector or string.
+
+    v2: str or binary  array
+        The compared binary vector or string.
+
+    Returns
+    -------
+    int
+        The Hamming distance between the two vectors.
+    """
     if isinstance(v1, str) and isinstance(v2, str):
         bv1 = bvstr2bv(v1)
         bv2 = bvstr2bv(v2)
+
     elif isinstance(v1, np.ndarray) and isinstance(v2, np.ndarray):
         bv1 = v1
         bv2 = v2
@@ -163,10 +235,31 @@ def extend_classes(y_ori, transform):
         y_ext[ind_labels] = np.random.choice(transform.inverse[ori_label], size=np.sum(ind_labels))
     return y_ext.astype(int)
 
+def eval_metrics(X, y, mapping, clf, metrics, kfolds=5):
+    """
+    Compute metrics.
+    """
+    kf = KFold(n_splits=kfolds, shuffle=True)
+    output = collections.defaultdict(list)
+    y_dist = compute_y_dist(y)
+    for train_index, test_index in kf.split(X):
+        X_train, X_test = X[train_index], X[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+        ty = mapping.map(y_train)
+        clf.fit(X_train, ty)
+        y_pred = clf.predict(X_test)
+        for metric_name in metrics:
+            if metric_name == "CKL":
+                res = metrics[metric_name](X_test, y_test,  y_pred, mapping, y_dist)
+            else:
+                res = metrics[metric_name](y_test, y_pred, mapping, y_dist)
+            output[metric_name].append(res)
+    return output
+
 
 if __name__ == "__main__":
     bvstr1 = int2bvstr(5, 4)
     bvstr2 = int2bvstr(5, 14)
     bv1 = bvstr2bv(bvstr1)
     bv2 = bvstr2bv(bvstr2)
-    print(hamming_distance(bv1, bv2))
+    print(compute_hamming_distance(bv1, bv2))
