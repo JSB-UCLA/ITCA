@@ -1,6 +1,7 @@
 import itertools
 import numpy as np
-
+import collections
+from sklearn.model_selection import KFold
 
 def compute_y_dist(y):
     """
@@ -233,6 +234,27 @@ def extend_classes(y_ori, transform):
         ind_labels = y_ori == ori_label
         y_ext[ind_labels] = np.random.choice(transform.inverse[ori_label], size=np.sum(ind_labels))
     return y_ext.astype(int)
+
+def eval_metrics(X, y, mapping, clf, metrics, kfolds=5):
+    """
+    Compute metrics.
+    """
+    kf = KFold(n_splits=kfolds, shuffle=True)
+    output = collections.defaultdict(list)
+    y_dist = compute_y_dist(y)
+    for train_index, test_index in kf.split(X):
+        X_train, X_test = X[train_index], X[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+        ty = mapping.map(y_train)
+        clf.fit(X_train, ty)
+        y_pred = clf.predict(X_test)
+        for metric_name in metrics:
+            if metric_name == "CKL":
+                res = metrics[metric_name](X_test, y_test,  y_pred, mapping, y_dist)
+            else:
+                res = metrics[metric_name](y_test, y_pred, mapping, y_dist)
+            output[metric_name].append(res)
+    return output
 
 
 if __name__ == "__main__":

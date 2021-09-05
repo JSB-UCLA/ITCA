@@ -1,4 +1,9 @@
-from .utils import bidict, hamming_distance
+from .utils import (
+    bidict,
+    compute_hamming_distance,
+    compute_y_dist
+)
+
 from .metrics import (
     adjusted_accuracy_score,
     itca,

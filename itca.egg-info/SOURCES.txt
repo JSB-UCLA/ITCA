@@ -3,6 +3,7 @@ setup.py
 itca/__init__.py
 itca/metrics.py
 itca/search.py
+itca/simulation_suites.py
 itca/simulator.py
 itca/utils.py
 itca.egg-info/PKG-INFO
