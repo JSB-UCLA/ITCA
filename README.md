@@ -34,6 +34,8 @@ from itca import itca, compute_y_dist, bidict, GreedySearch
 # `X` is the feature matrix, a 2D numpy array of size (n_smaples, n_features).
 # `y_obs` is the observed labels, a 1D numpy array of size (n_samples, ) that takes values 
 # in [0, 1, 2] (the observed classes number K0=3).
+# The combination is represented by a bidirectional disctionary `bidict`.
+# `bidict({0:0, 1:0, 2:1, 3:2})` indactes the mapping from the orignal labels to the combined labels.
 true_combination = bidict({0:0, 1:0, 2:1, 3:2})
 X1 = np.array([[0., 0.]]) + np.random.randn(200,  2)
 X2 = np.array([[1.5, 1.5]]) + np.random.randn(200, 2)
@@ -46,7 +48,7 @@ y_obs = true_combination.reverse_map(y_true) # observed labels K_0=4
 # `clf` can be any sklearn classifcation algorithm or any classifcation algorithm that implements 
 # `clf.fit(X, y)` for fitting and `clf.predict(X)` for prediction.  
 clf = LinearDiscriminantAnalysis()
-# =================== Evaluate s-ITCA ================
+# =================== Evaluate s-ITCA on the true combination ================
 clf.fit(X, true_combination.map(y_obs))
 y_pred = clf.predict(X)
 itca(y_obs, y_pred, true_combination, compute_y_dist(y_obs))
