@@ -169,7 +169,7 @@ class Strategy(metaclass=abc.ABCMeta):
             raise ValueError(
                 "class_type must be one of \"nominal\", \"ordinal\" and \"tree\".")
 
-    def compute_itca(self, X, y, clf, mapping, kfolds=5, y_dist=None, return_class_acc=False):
+    def compute_itca(self, X, y, clf, mapping, kfolds=5, y_dist=None, return_class_acc=False, random_state=None):
         """
         Given the data and a classifier, compute ITCA through cross validation.
 
@@ -195,6 +195,8 @@ class Strategy(metaclass=abc.ABCMeta):
         return_class_acc: bool
             Return the class-wise accuracy.
 
+        random_state: int, RandomState instance or None, optional (default=None)
+
         Returns
         -------
         itca_cv: (kfolds, ) ndarray
@@ -212,7 +214,7 @@ class Strategy(metaclass=abc.ABCMeta):
             y_dist is illegal.
         """
         if isinstance(kfolds, int) and kfolds > 1:
-            kf = KFold(n_splits=kfolds, shuffle=True)
+            kf = KFold(n_splits=kfolds, shuffle=True, random_state=random_state)
         elif kfolds == 1:
             pass
         elif isinstance(kfolds, KFold):
@@ -258,7 +260,7 @@ class GreedySearch(Strategy):
     Search the class combination map that maximizes s-ITCA by greedy algorithm.
     """
 
-    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
+    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True, random_state=None):
         """
         Search the best mapping start.
 
@@ -274,6 +276,8 @@ class GreedySearch(Strategy):
             Classifiers that implements the standard interfaces of `scikit-learn`,
             including `fit(X, y)` and `predict(X)`.
 
+        random_state: int, RandomState instance or None, optional (default=None)
+
         early_stop: bool
             Stop when the metric cannot be improved by class combination when `early_stop` is True.
 
@@ -286,7 +290,7 @@ class GreedySearch(Strategy):
         if min(y) != 0 or max(y) != n_classes - 1:
             raise ValueError("Labels should be between 0 to K.")
         if kfolds > 1:
-            kf = KFold(n_splits=kfolds, shuffle=True)
+            kf = KFold(n_splits=kfolds, shuffle=True, random_state=random_state)
         else:
             kf = 1
         # compute y_dist
@@ -329,12 +333,12 @@ class GreedySearchPruned(Strategy):
     Using the lower bound derived by class-wise accuracy to prune the search space.
     """
 
-    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
+    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True, random_state=None):
         unique_y = np.unique(y)
         n_classes = len(unique_y)
         if min(y) != 0 or max(y) != n_classes - 1:
             raise ValueError("Labels should be between 0 to K.")
-        kf = KFold(n_splits=kfolds, shuffle=True)
+        kf = KFold(n_splits=kfolds, shuffle=True, random_state=random_state)
         # compute y_dist
         y_dist = compute_y_dist(y)
         # construct identity mapping.
@@ -383,7 +387,7 @@ class BFSearch(Strategy):
     """
     Search the class combination map that maximizes s-ITCA by breadth-first search algorithm.
     """
-    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=False):
+    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=False, random_state=None):
         self.counter = 0
 
         def bfs(visited, cur_node, kf, y_dist, i):
@@ -407,7 +411,7 @@ class BFSearch(Strategy):
         n_classes = len(unique_y)
         if min(y) != 0 or max(y) != n_classes - 1:
             raise ValueError("Labels should be between 0 to K.")
-        kf = KFold(n_splits=kfolds, shuffle=True)
+        kf = KFold(n_splits=kfolds, shuffle=True, random_state=random_state)
         # compute y_dist
         y_dist = compute_y_dist(y)
         # construct identity mapping.
@@ -430,13 +434,13 @@ class BFSearchPruned(Strategy):
     Search the class combination map that maximizes s-ITCA by breadth-first search algorithm.
     Using the lower bound derived by class-wise accuracy to prune the search space.
     """
-    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True):
+    def search(self, X, y, clf, kfolds=5, verbose=False, early_stop=True, random_state=None):
         self.counter = 0
         unique_y = np.unique(y)
         n_classes = len(unique_y)
         if min(y) != 0 or max(y) != n_classes - 1:
             raise ValueError("Labels should be between 0 to K.")
-        kf = KFold(n_splits=kfolds, shuffle=True)
+        kf = KFold(n_splits=kfolds, shuffle=True, random_state=random_state)
         # compute y_dist
         y_dist = compute_y_dist(y)
 
