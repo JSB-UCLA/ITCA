@@ -59,6 +59,20 @@ gs.selected # show the selected class combination
 #>>>{0: 0, 1: 0, 2: 1, 3: 2}|ITCA=0.8807|
 ```
 Please see the [tutorial](https://messcode.github.io/ITCA/tutorials.html)  for more details.
+## Citation
+```latex
+@article{JMLR:v23:21-1150,
+  author  = {Chihao Zhang and Yiling Elaine Chen and Shihua Zhang and Jingyi Jessica Li},
+  title   = {Information-theoretic Classification Accuracy: A Criterion that Guides Data-driven Combination of Ambiguous Outcome Labels in Multi-class Classification},
+  journal = {Journal of Machine Learning Research},
+  year    = {2022},
+  volume  = {23},
+  number  = {341},
+  pages   = {1--65},
+  url     = {http://jmlr.org/papers/v23/21-1150.html}
+}
+```
+
 
 ## Contribute
 - Issue tracker:  https://github.com/messcode/ITCA/issues
