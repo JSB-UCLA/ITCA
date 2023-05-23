@@ -8,17 +8,22 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'itca'
 DESCRIPTION = 'A  Data-driven Criterion to Combining Ambiguous Outcome Labels in Multi-class Classification'
-URL = 'https://github.com/messcode/stagewiseNN'
-EMAIL = 'zhangchihao11@outlook.com'
+URL = 'https://github.com/JSB-UCLA/ITCA'
+EMAIL = 'zhang.dabiao11@gmail.com'
 AUTHOR = 'Chihao Zhang'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
     'numpy',
     'scikit_learn',
+    'networkx',
+    'matplotlib',
+    'pygraphviz',
 ]
+# what packages are optional?
+EXTRAS = {'pygraphviz': ['pygraphviz']}
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -89,7 +94,9 @@ setup(
     url=URL,
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     install_requires=REQUIRED,
+    extras_require=EXTRAS,
     include_package_data=True,
+    package_data={'': ['datasets/*.npz']},
     license='MIT',
     classifiers=[
         # Trove classifiers

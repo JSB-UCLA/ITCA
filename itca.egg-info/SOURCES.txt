@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 itca/__init__.py
@@ -6,8 +7,11 @@ itca/search.py
 itca/simulation_suites.py
 itca/simulator.py
 itca/utils.py
+itca/visualize.py
 itca.egg-info/PKG-INFO
 itca.egg-info/SOURCES.txt
 itca.egg-info/dependency_links.txt
 itca.egg-info/requires.txt
 itca.egg-info/top_level.txt
+itca/datasets/__init__.py
+itca/datasets/hydra.npz

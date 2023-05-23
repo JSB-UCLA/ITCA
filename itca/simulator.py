@@ -15,18 +15,18 @@ class SimData(object):
         ----------
         generator: `str`
 
-        X: covariate matrix, shape = [n_features, n_samples]
+        X: covariate matrix, shape = [n_samples, n_features]
 
         y: integer array that indicates labels, shape = [n_samples, ]
 
         probs: probability distribution matrix, shape = [n_classes, n_samples]
         """
         self.generator_name = generator
-        self.n_features, self.n_samples = X.shape
+        self.n_samples, self.n_features = X.shape
         self.X = X
         self.y = y
         self.size = y.size
-        assert(self.size == X.shape[1])
+        assert(self.size == X.shape[0])
         self.n_classes = np.unique(y).size
         self.probs = probs
         self.centriods = centroids
@@ -72,7 +72,7 @@ class SimData(object):
         """
         ind = np.arange(self.n_samples)
         np.random.shuffle(ind)
-        self.X = self.X[:, ind]
+        self.X = self.X[ind, :]
         self.y = self.y[ind]
         if self.probs is not None:
             self.probs = self.probs[:, ind]
@@ -191,7 +191,7 @@ class SimOrdLogit(object):
         y = np.zeros(n_samples)
         for ind_samples in range(n_samples):
             y[ind_samples] = np.random.choice(self.labels, p=probs[:, ind_samples])
-        return SimData("OrdinalLR", X, y.astype(int), probs=probs).shuffle()
+        return SimData("OrdinalLR", X.T, y.astype(int), probs=probs).shuffle()
 
 # BVv[Huul}#X9Yl5YH@(2Tj1xg
 
@@ -246,8 +246,7 @@ class SimLDA(object):
             y_list.append(y)
         X = np.concatenate(X_list, axis=1)
         y = np.concatenate(y_list)
-
-        return SimData("LDA", X, y, self.centroids).shuffle()
+        return SimData("LDA", X.T, y, self.centroids).shuffle()
 
 
 

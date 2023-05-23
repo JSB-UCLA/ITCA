@@ -1,2 +1,8 @@
 numpy
 scikit_learn
+networkx
+matplotlib
+pygraphviz
+
+[pygraphviz]
+pygraphviz
