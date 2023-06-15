@@ -12,7 +12,7 @@ URL = 'https://github.com/JSB-UCLA/ITCA'
 EMAIL = 'zhang.dabiao11@gmail.com'
 AUTHOR = 'Chihao Zhang'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.1'
+VERSION = '0.1.3'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -20,7 +20,7 @@ REQUIRED = [
     'scikit_learn',
     'networkx',
     'matplotlib',
-    'pygraphviz',
+    'pydot',
 ]
 # what packages are optional?
 EXTRAS = {'pygraphviz': ['pygraphviz']}

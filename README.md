@@ -9,6 +9,7 @@ Requirements:
 - python >= 3.6
 - numpy: https://pypi.org/project/numpy/
 - scikit-learn: https://pypi.org/project/scikit-learn/
+- [optional] pygraphviz: https://pypi.org/project/pygraphviz/ (for visualization)
 
 Install from PyPI by running (in the command line):
 
@@ -59,6 +60,9 @@ gs.selected # show the selected class combination
 #>>>{0: 0, 1: 0, 2: 1, 3: 2}|ITCA=0.8807|
 ```
 Please see the [tutorial](https://messcode.github.io/ITCA/tutorials.html)  for more details.
+## Troubleshooting
+For visualization, ITCA requires `pygraphviz` package. If you have trouble installing `pygraphviz`, please refer to [pygraphviz](https://pygraphviz.github.io/documentation/stable/install.html) for detailed installation guides.
+Please make sure that `dot` is in your `PATH` environment variable. If you are using Windows, please refer to [Graphviz](https://graphviz.org/download/) for detailed installation guides.
 ## Citation
 ```latex
 @article{JMLR:v23:21-1150,
