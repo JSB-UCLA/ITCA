@@ -1,3 +1,4 @@
+__version__ = '0.1.3'
 from .utils import (
     bidict,
     compute_hamming_distance,

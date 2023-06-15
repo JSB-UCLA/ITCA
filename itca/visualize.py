@@ -1,11 +1,5 @@
 import networkx as nx
 # check if pygraphviz is installed
-try:
-    import pygraphviz
-    from networkx.drawing.nx_agraph import graphviz_layout
-except ImportError:
-    raise ImportError("requires pygraphviz to visualize tree")
-
 import matplotlib.pyplot as plt
 import copy
 from itca.utils import bidict
@@ -61,7 +55,8 @@ def gen_tree(path):
     return G
 
 
-def plot_tree(strategy=None, graph=None, figsize=(6, 12), node_size=350, direction="vertical", return_graph=False):
+def plot_tree(strategy=None, graph=None, figsize=(6, 12), node_size=350, direction="vertical",
+              return_graph=False, use_pygraphviz=False):
     """
     :param gs: instance of SearchStrategy
     :param figsize: size of the figure
@@ -77,7 +72,18 @@ def plot_tree(strategy=None, graph=None, figsize=(6, 12), node_size=350, directi
     else:
         G = copy.copy(graph)
     G_ = rename_G(G)
-    pos = nx.nx_agraph.graphviz_layout(G_, prog="dot")
+    if use_pygraphviz:
+        try:
+            import pygraphviz
+            from networkx.drawing.nx_agraph import graphviz_layout
+        except ImportError:
+            raise ImportError("requires pygraphviz to visualize tree")
+        pos = nx.nx_agraph.graphviz_layout(G_, prog="dot")
+    else:
+        try:
+            pos = nx.nx_pydot.pydot_layout(G_, prog='dot')
+        except FileNotFoundError:
+            raise FileNotFoundError("requires pydot to visualize tree; please find the troubleshooting guide at https://github.com/JSB-UCLA/ITCA")
     if direction == "horizontal":
         flipped_pos = {node: (y, -x) for (node, (x,y)) in pos.items()}
         pos = flipped_pos

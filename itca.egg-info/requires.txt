@@ -2,7 +2,7 @@ numpy
 scikit_learn
 networkx
 matplotlib
-pygraphviz
+pydot
 
 [pygraphviz]
 pygraphviz
